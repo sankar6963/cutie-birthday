@@ -1,0 +1,521 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Cutie ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="birthdayMusic" loop preload="auto">
+    <source src="music/romantic.mp3" type="audio/mpeg">
+</audio>
+
+    <div class="gold-particles" id="particles"></div>
+
+    <!-- SECTION 1: WELCOME -->
+    <section class="welcome-screen" id="welcomeScreen">
+        <div class="gold-line"></div>
+
+        <p class="top-text">A LITTLE SURPRISE FOR SOMEONE SPECIAL</p>
+
+        <h1>Hello, My <span>Cutie</span> ❤️</h1>
+
+        <p class="welcome-message">
+            Today is all about you.
+            A little world of love, just for you.
+        </p>
+
+        <div class="gold-line"></div>
+
+        <button id="surpriseBtn">
+            OPEN YOUR SURPRISE ✨
+        </button>
+
+        <p class="bottom-text">MADE WITH ALL MY LOVE ❤️</p>
+    </section>
+
+
+    <!-- SECTION 2: INTERACTIVE BALLOONS -->
+    <section class="balloon-screen hidden" id="balloonScreen">
+
+        <p class="top-text">A LITTLE LOVE IS FLOATING YOUR WAY</p>
+
+        <h2>Pop the Balloons, Cutie! 🎈</h2>
+
+        <p class="balloon-instruction">
+            Tap each balloon to discover a little message from me.
+        </p>
+
+        <div class="balloon-container">
+
+            <button class="balloon balloon-one" data-message="Your smile is my favourite view. Never stop smiling, my Cutie! ❤️">
+                <span>♥</span>
+            </button>
+
+            <button class="balloon balloon-two" data-message="You make even my ordinary days feel extraordinary. ✨">
+                <span>♥</span>
+            </button>
+
+            <button class="balloon balloon-three" data-message="If I had to choose again, I would still choose YOU. Every single time! 💕">
+                <span>♥</span>
+            </button>
+
+            <button class="balloon balloon-four" data-message="You are my favourite person, my happiness and my sweetest blessing. 🥰">
+                <span>♥</span>
+            </button>
+
+        </div>
+
+        <div class="message-box" id="messageBox">
+            <p id="balloonMessage">
+                Your little surprise messages are waiting...
+            </p>
+        </div>
+
+        <p class="balloon-counter" id="balloonCounter">
+            0 / 4 BALLOONS POPPED
+        </p>
+
+        <button id="continueBtn" class="continue-btn hidden">
+            CONTINUE TO YOUR SURPRISE ✨
+        </button>
+
+    </section>
+
+
+<!-- SECTION 3: SPECIAL NUMBER 20 -->
+
+<section class="number-screen hidden" id="numberScreen">
+
+    <p class="top-text">A VERY SPECIAL MILESTONE</p>
+
+    <h2>Guess what makes this year so special?</h2>
+
+    <p class="number-intro">
+        A beautiful new chapter begins...
+        And I have something special to celebrate.
+    </p>
+
+    <button id="revealNumberBtn" class="reveal-number-btn">
+        REVEAL THE MAGIC NUMBER ✨
+    </button>
+
+    <div class="number-reveal hidden" id="numberReveal">
+
+        <div class="big-number">20</div>
+
+        <h3>TWENTY & BEAUTIFUL ❤️</h3>
+
+        <p class="number-quote">
+            Two decades of beautiful moments, countless dreams,
+            and a heart that makes the world brighter.
+        </p>
+
+        <div class="number-divider"></div>
+
+        <p class="number-message">
+            My Cutie, 20 years of being YOU, and every little
+            thing about you is worth celebrating.
+
+            May your next chapter be filled with happiness,
+            endless smiles, beautiful adventures and all the
+            love your heart deserves.
+        </p>
+
+        <h4 class="number-closing">
+            Your best chapters are yet to come! 💫
+        </h4>
+
+        <p class="number-final-quote">
+            If I could make one wish for your 20th year,
+            it would be that you see yourself through my eyes –
+            because then you'd know just how incredibly
+            special you are. ❤️
+        </p>
+
+        <button id="numberContinueBtn" class="continue-btn">
+            CONTINUE TO THE NEXT SURPRISE ✨
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- SECTION 4: YES OR NO QUESTIONS -->
+
+<section class="question-screen hidden" id="questionScreen">
+
+    <p class="top-text">A FEW QUESTIONS FROM MY HEART</p>
+
+    <h2>Hey Cutie, Tell Me Something... ❤️</h2>
+
+    <p class="question-intro">
+        Be honest! I have a few little questions for you. 😘
+    </p>
+
+    <div class="question-card">
+
+        <div class="heart-icon">💗</div>
+
+        <p class="question-number" id="questionNumber">
+            QUESTION 1 OF 4
+        </p>
+
+        <h3 id="questionText">
+            Do you love me?
+        </h3>
+
+        <div class="answer-buttons" id="answerButtons">
+
+            <button class="yes-btn" id="yesBtn">
+                YES ❤️
+            </button>
+
+            <button class="no-btn" id="noBtn">
+                NO 🙈
+            </button>
+
+        </div>
+
+        <div class="answer-message hidden" id="answerMessage">
+            <p id="answerMessageText"></p>
+        </div>
+
+        <button class="continue-btn hidden" id="nextQuestionBtn">
+            NEXT QUESTION 💕
+        </button>
+
+    </div>
+
+    <p class="question-footer">
+        Just you, me and a little bit of love. ❤️
+    </p>
+
+</section>
+  
+
+<!-- SECTION 5: CUTE MEMORIES PHOTO GALLERY -->
+
+<section class="memories-screen hidden" id="memoriesScreen">
+
+    <p class="top-text">A COLLECTION OF LITTLE MOMENTS</p>
+
+    <h2>Our Cute Memories ❤️</h2>
+
+    <p class="memories-intro">
+        Every picture has a story.
+        Every moment has a special place in my heart.
+    </p>
+
+    <div class="photo-gallery">
+
+        <div class="photo-card">
+            <img src="https://picsum.photos/seed/cutie-memory-1/600/750"
+                 alt="Our first memory">
+            <p>Our Beautiful Beginning ❤️</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="https://picsum.photos/seed/cutie-memory-2/600/750"
+                 alt="A special moment">
+            <p>My Favourite Smile 🥰</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="https://picsum.photos/seed/cutie-memory-3/600/750"
+                 alt="Our special day">
+            <p>A Day to Remember 💍</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="https://picsum.photos/seed/cutie-memory-4/600/750"
+                 alt="A happy memory">
+            <p>Happiness Looks Like Us 💕</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="https://picsum.photos/seed/cutie-memory-5/600/750"
+                 alt="Our lovely memories">
+            <p>Forever My Favourite Person ❤️</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="https://picsum.photos/seed/cutie-memory-6/600/750"
+                 alt="Our journey together">
+            <p>Our Journey Together ✨</p>
+        </div>
+
+    </div>
+
+    <p class="memories-ending">
+        And the best memories are still waiting to be made... ❤️
+    </p>
+
+    <button id="memoriesContinueBtn" class="continue-btn">
+        LET'S CELEBRATE YOUR BIRTHDAY 🎂
+    </button>
+
+</section>
+
+
+<!-- SECTION 6: BIRTHDAY CAKE -->
+<section class="cake-screen hidden" id="cakeScreen">
+
+    <p class="cake-subtitle">A little birthday magic for you</p>
+    <h1>Make a Wish, Cutie! ❤️</h1>
+    <p class="cake-instruction">
+        Close your eyes, make a beautiful wish and tap the button.
+    </p>
+
+    <div class="birthday-cake">
+        <div class="candles">
+            <div class="candle" onclick="blowCandle(this)">
+                <span class="flame"></span>
+            </div>
+            <div class="candle" onclick="blowCandle(this)">
+                <span class="flame"></span>
+            </div>
+            <div class="candle" onclick="blowCandle(this)">
+                <span class="flame"></span>
+            </div>
+        </div>
+
+        <div class="cake-top"></div>
+        <div class="cake-middle"></div>
+        <div class="cake-bottom"></div>
+        <div class="cake-plate"></div>
+    </div>
+
+    <button id="wishButton" class="gold-button">
+        MAKE A WISH ✨
+    </button>
+
+    <h2 id="wishMessage" class="wish-message hidden">
+        May every beautiful wish in your heart come true! ❤️
+    </h2>
+
+    <button id="cakeContinueBtn" class="gold-button hidden">
+        CONTINUE ✨
+    </button>
+
+</section>
+
+<!-- SECTION 7: BIRTHDAY CELEBRATION -->
+<section class="celebration-screen hidden" id="celebrationScreen">
+
+    <div id="confettiContainer"></div>
+
+    <p class="celebration-label">TODAY IS ALL ABOUT YOU</p>
+
+    <h1 class="celebration-title">
+        HAPPY 20TH<br>
+        BIRTHDAY!
+    </h1>
+
+    <h2 class="celebration-name">
+        MY CUTIE ❤️
+    </h2>
+
+    <p class="celebration-message">
+        May your life always sparkle with happiness,
+        laughter, beautiful memories and endless love.
+    </p>
+
+    <div class="celebration-cake-icon">🎂</div>
+
+    <button class="gold-button" id="celebrateAgainBtn">
+        CELEBRATE AGAIN ✨
+    </button>
+
+    <button class="gold-button" id="celebrationContinueBtn">
+        ONE MORE SURPRISE ❤️
+    </button>
+
+</section>
+
+<!-- SECTION 7: PERSONAL BIRTHDAY LETTER -->
+<section class="letter-screen hidden" id="letterScreen">
+
+    <p class="letter-subtitle">A MESSAGE FROM MY HEART</p>
+    <h1>For My Cutie ❤️</h1>
+
+    <p class="letter-instruction">
+        I have something special to tell you...
+        Tap the envelope to open your letter.
+    </p>
+
+    <button class="envelope" id="envelopeBtn" aria-label="Open your birthday letter">
+        <span class="envelope-heart">❤️</span>
+        <span class="envelope-text">OPEN ME</span>
+    </button>
+
+    <div class="love-letter hidden" id="loveLetter">
+
+        <p class="letter-date">16 November 2026</p>
+
+        <h2>My Dearest Cutie, ❤️</h2>
+
+        <p>
+            Happy Birthday, my love! 🥰
+        </p>
+
+        <p>
+            Today is all about celebrating you, the beautiful person
+            who makes my world brighter just by being in it.
+        </p>
+
+        <p>
+            Every smile, every little conversation, every silly moment
+            and every memory with you means more to me than words can say.
+            I feel lucky to have you by my side.
+        </p>
+
+        <p>
+            As you turn 20, I wish you endless happiness, good health,
+            beautiful opportunities and all the dreams your heart holds.
+            May I always be there to celebrate your successes, comfort
+            you on difficult days and make you smile whenever you need it.
+        </p>
+
+        <p>
+            No matter how many birthdays come and go, I want to keep
+            making beautiful memories with you.
+        </p>
+
+        <p class="letter-ending">
+            Forever yours,<br>
+            Sreevaaru ❤️
+        </p>
+
+    </div>
+
+    <button id="letterContinueBtn" class="gold-button hidden">
+        OPEN YOUR NEXT SURPRISE 🎁
+    </button>
+
+</section>
+
+<!-- SECTION 8: SURPRISE GIFT -->
+<section class="gift-screen hidden" id="giftScreen">
+
+    <p class="gift-subtitle">A LITTLE SOMETHING JUST FOR YOU</p>
+
+    <h1>Your Special Surprise, Cutie! ❤️</h1>
+
+    <p class="gift-instruction">
+        I have kept a little surprise for you.
+        Tap the gift box to unwrap it!
+    </p>
+
+    <button class="gift-box" id="giftBoxBtn" aria-label="Open your surprise gift">
+        <div class="gift-lid">
+            <div class="gift-lid-ribbon"></div>
+        </div>
+
+        <div class="gift-body">
+            <div class="gift-ribbon"></div>
+            <div class="gift-bow">🎀</div>
+        </div>
+    </button>
+
+    <p class="gift-tap-hint" id="giftTapHint">
+        TAP TO OPEN YOUR GIFT ✨
+    </p>
+
+    <div class="gift-reveal hidden" id="giftReveal">
+
+        <div class="gift-heart">💝</div>
+
+        <h2>My Biggest Gift Is YOU!</h2>
+
+        <p>
+            I could wrap a thousand gifts, but none of them
+            would ever be as precious as having you in my life.
+        </p>
+
+        <p>
+            My wish is to keep making you smile, creating memories
+            with you and celebrating every birthday together.
+        </p>
+
+        <h3>Here's to us, Cutie. Forever & Always! ❤️</h3>
+
+    </div>
+
+    <button id="giftContinueBtn" class="gold-button hidden">
+        ONE LAST THING ❤️
+    </button>
+
+</section>
+
+<!-- SECTION 9: EMOTIONAL CLOSING SCREEN -->
+<section class="closing-screen hidden" id="closingScreen">
+
+    <div class="closing-sparkles" id="closingSparkles"></div>
+
+    <p class="closing-subtitle">ONE LAST MESSAGE, MY LOVE</p>
+
+    <div class="closing-heart">❤️</div>
+
+    <h1>Forever & Always</h1>
+
+    <h2>My Cutie ❤️</h2>
+
+    <div class="closing-divider">✦ ───────── ✦</div>
+
+    <p class="closing-message">
+        This little birthday surprise may come to an end,
+        but my love for you never will.
+    </p>
+
+    <p class="closing-message">
+        From all the little moments to the biggest dreams,
+        I want to keep choosing you, laughing with you,
+        growing with you and making memories together.
+    </p>
+
+    <p class="closing-highlight">
+        Happy 20th Birthday, my beautiful Cutie!
+    </p>
+
+    <p class="closing-forever">
+        Today, tomorrow and always... ❤️
+    </p>
+
+    <p class="closing-signature">
+        With all my love,<br>
+        Yours Forever Sreevaaru❤️
+    </p>
+
+    <button class="gold-button" id="replayBirthdayBtn">
+        RELIVE YOUR SURPRISE ↻
+    </button>
+
+    <p class="closing-footer">
+        Made with endless love, just for you.
+    </p>
+
+</section>
+
+<!-- PHOTO FULL-SCREEN POPUP -->
+
+<div class="photo-lightbox hidden" id="photoLightbox">
+
+    <button id="closeLightbox" class="close-lightbox">
+        ✕
+    </button>
+
+    <img id="lightboxImage" src="" alt="Selected memory">
+
+    <p id="lightboxCaption"></p>
+
+</div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
