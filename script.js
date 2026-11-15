@@ -315,58 +315,101 @@ nextQuestionBtn.addEventListener("click", () => {
 
 
 // =================================
-// SECTION 5 - PHOTO LIGHTBOX
+// SECTION 5 - PHOTO LIGHTBOX WITH PHOTO NAVIGATION
 // =================================
 
-const photoCards = document.querySelectorAll(".photo-card");
+const photoCards = Array.from(document.querySelectorAll(".photo-card"));
+const photoLightbox = document.getElementById("photoLightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxCaption = document.getElementById("lightboxCaption");
+const photoCounter = document.getElementById("photoCounter");
+const closeLightbox = document.getElementById("closeLightbox");
+const previousPhoto = document.getElementById("previousPhoto");
+const nextPhoto = document.getElementById("nextPhoto");
 
-const photoLightbox =
-    document.getElementById("photoLightbox");
+let currentPhotoIndex = 0;
+let touchStartX = 0;
 
-const lightboxImage =
-    document.getElementById("lightboxImage");
+function showPhoto(index) {
+    if (!photoCards.length) return;
 
-const lightboxCaption =
-    document.getElementById("lightboxCaption");
+    // Wrap around at the beginning and end of the gallery.
+    currentPhotoIndex = (index + photoCards.length) % photoCards.length;
 
-const closeLightbox =
-    document.getElementById("closeLightbox");
+    const card = photoCards[currentPhotoIndex];
+    const image = card.querySelector("img");
+    const caption = card.querySelector("p");
 
-photoCards.forEach((card) => {
+    lightboxImage.src = image.src;
+    lightboxImage.alt = image.alt || "Selected memory";
+    lightboxCaption.textContent = caption ? caption.textContent : "";
+    photoCounter.textContent = `${currentPhotoIndex + 1} / ${photoCards.length}`;
+}
 
-    card.addEventListener("click", () => {
+function openPhotoViewer(index) {
+    showPhoto(index);
+    photoLightbox.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+    closeLightbox.focus();
+}
 
-        const image = card.querySelector("img");
-        const caption = card.querySelector("p");
-
-        lightboxImage.src = image.src;
-        lightboxCaption.textContent = caption.textContent;
-
-        photoLightbox.classList.remove("hidden");
-
-    });
-
-});
-
-closeLightbox.addEventListener("click", () => {
-
+function hidePhotoViewer() {
     photoLightbox.classList.add("hidden");
-
     lightboxImage.src = "";
+    document.body.style.overflow = "";
+}
 
+photoCards.forEach((card, index) => {
+    card.addEventListener("click", () => openPhotoViewer(index));
 });
+
+previousPhoto.addEventListener("click", () => {
+    showPhoto(currentPhotoIndex - 1);
+});
+
+nextPhoto.addEventListener("click", () => {
+    showPhoto(currentPhotoIndex + 1);
+});
+
+closeLightbox.addEventListener("click", hidePhotoViewer);
 
 photoLightbox.addEventListener("click", (event) => {
-
     if (event.target === photoLightbox) {
-
-        photoLightbox.classList.add("hidden");
-
-        lightboxImage.src = "";
-
+        hidePhotoViewer();
     }
-
 });
+
+// Keyboard controls: left/right arrows to browse, Escape to close.
+document.addEventListener("keydown", (event) => {
+    if (photoLightbox.classList.contains("hidden")) return;
+
+    if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        showPhoto(currentPhotoIndex - 1);
+    } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        showPhoto(currentPhotoIndex + 1);
+    } else if (event.key === "Escape") {
+        hidePhotoViewer();
+    }
+});
+
+// Swipe left/right on touchscreens to change photos.
+photoLightbox.addEventListener("touchstart", (event) => {
+    touchStartX = event.changedTouches[0].screenX;
+}, { passive: true });
+
+photoLightbox.addEventListener("touchend", (event) => {
+    const touchEndX = event.changedTouches[0].screenX;
+    const swipeDistance = touchEndX - touchStartX;
+
+    if (Math.abs(swipeDistance) > 50) {
+        showPhoto(swipeDistance > 0
+            ? currentPhotoIndex - 1
+            : currentPhotoIndex + 1);
+    }
+}, { passive: true });
+
 
 // Start romantic background music after the first user interaction
 const birthdayMusic = document.getElementById("birthdayMusic");
