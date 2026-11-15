@@ -503,15 +503,29 @@
 
 <!-- PHOTO FULL-SCREEN POPUP -->
 
-<div class="photo-lightbox hidden" id="photoLightbox">
+<div class="photo-lightbox hidden" id="photoLightbox" role="dialog"
+     aria-modal="true" aria-label="Photo memories">
 
-    <button id="closeLightbox" class="close-lightbox">
+    <button id="closeLightbox" class="close-lightbox"
+            aria-label="Close photo viewer">
         ✕
     </button>
 
-    <img id="lightboxImage" src="" alt="Selected memory">
+    <button id="previousPhoto" class="photo-nav photo-prev"
+            aria-label="Previous photo">
+        &#10094;
+    </button>
 
-    <p id="lightboxCaption"></p>
+    <div class="lightbox-content">
+        <img id="lightboxImage" src="" alt="Selected memory">
+        <p id="lightboxCaption"></p>
+        <p id="photoCounter" class="photo-counter" aria-live="polite"></p>
+    </div>
+
+    <button id="nextPhoto" class="photo-nav photo-next"
+            aria-label="Next photo">
+        &#10095;
+    </button>
 
 </div>
 
